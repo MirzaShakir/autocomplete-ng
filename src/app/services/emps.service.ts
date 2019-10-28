@@ -7,7 +7,7 @@ import { debounceTime } from 'rxjs/internal/operators/debounceTime';
 export class empsService {
 
     constructor (private HttpService: HttpClient ) {}
-        
+
     search( term ) {
         var allEmps = this.HttpService.get('http://localhost/mParlorApp/index.php/app_module/get_users?username='+ encodeURIComponent(term))
         .pipe(

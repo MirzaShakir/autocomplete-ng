@@ -1,0 +1,51 @@
+<div style="text-align:left;">
+    <h6>
+      {{ title }}
+    </h6>
+  
+    <form>
+        <mat-form-field class="container">
+            <mat-label>Environment: </mat-label>
+            <mat-select
+              matInput
+              #environment
+              name='environment'
+              placeholder="Please select environment"
+              >
+                <mat-option value="dev" selected="selected"> Development </mat-option>
+                <mat-option value="dev-old"> Dev - Old </mat-option>
+                <mat-option value="stage"> Stage </mat-option>
+                <mat-option value="production"> Production </mat-option>
+            </mat-select>
+        </mat-form-field>
+        <br/>
+        <br/>
+
+        <mat-form-field class="container">
+            <mat-label>Username: </mat-label>
+            <!-- ADD AN INPUT BOX OF TYPE TEXT AND LINK IT TO THE AUTO COMPLETE PANEL. -->
+            <input type="text" placeholder="Search User"
+                matInput 
+                [formControl]="searchTerm"
+                name="userId"
+                #userId
+                [matAutocomplete]="auto">  
+  
+            <!-- CREATE AUTO COMPLETE PANEL WITH OPTIONS. -->
+            <mat-autocomplete #auto="matAutocomplete">
+              <mat-option *ngFor="let user of Users"  [value]="user.id" title="{{user.email}}">
+                <span *ngIf="user.firstname">
+                  {{ user.firstname }} {{ user.lastname }}
+                </span>
+                [ {{ user.email }} ]
+              </mat-option>
+            </mat-autocomplete>
+  
+          </mat-form-field>
+    
+        <div class="container">
+            <button type="button" class="btn btn-success" (click)="showAdvertisers(userId.value, environment.value)"> Submit </button>
+        </div>
+      </form>
+   
+  </div>
