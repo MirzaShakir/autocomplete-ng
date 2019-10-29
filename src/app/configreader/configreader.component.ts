@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./configreader.component.css']
 })
 export class ConfigreaderComponent implements OnInit {
+  arrjsonWidgets = <any>[];
 
   constructor() { }
 

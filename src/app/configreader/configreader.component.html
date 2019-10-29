@@ -1,1 +1,58 @@
-<p>configreader works!</p>
+<div style="text-align:left;">
+    <h6>{{ title }}</h6>
+  
+    <form>
+      <mat-form-field class="container">
+        <mat-label>Environment: </mat-label>
+        <textarea
+          matInput
+          #jsonFilePath
+          name="jsonFilePath"
+          placeholder="Please enter the configuration.json file URL"
+        ></textarea>
+      </mat-form-field>
+      <br />
+      <br />
+  
+      <div class="container">
+        <button
+          type="button"
+          class="btn btn-success"
+          (click)="showAdvertisers(jsonFilePath.value)"
+        >
+          Submit
+        </button>
+        <span style="margin-left: 5%;"></span>
+        <button
+          type="button"
+          class="btn btn-success"
+          (click)="showAdvertisers(jsonFilePath.value)"
+        >
+          Load form GIT branch
+        </button>
+      </div>
+    </form>
+  </div>
+  <div style="text-align:left;">
+    <table *ngIf="arrjsonWidgets.length > 0" class="table table-striped table-responsive-md btn-table">
+      <!-- ADD HEADERS -->
+      <tr>
+        <th> ID </th>
+        <th> Advertiser Name</th>
+        <th> Product </th>
+        <th> Campaigns </th>      
+        <th> Impressions </th>
+      </tr>
+  
+      <!-- BIND ARRAY TO TABLE -->
+      <tr *ngFor="let adv of arrjsonWidgets">
+        <td>{{ adv.id }}</td>
+        <td>{{ adv.Name }}</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+    </table>
+  </div>
+  
