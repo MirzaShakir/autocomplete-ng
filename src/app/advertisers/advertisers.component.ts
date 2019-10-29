@@ -19,6 +19,7 @@ export class AdvertisersComponent implements OnInit {
   searchTerm: FormControl = new FormControl();
   searchEnv: FormControl = new FormControl();
   Users = <any>[];
+  arrAdvertisers = <any>[];
 
   constructor( private service: empsService, private HttpService: HttpClient ) {}
 
@@ -32,9 +33,13 @@ export class AdvertisersComponent implements OnInit {
     console.log( reqBody );
     return this.HttpService.post( 'http://localhost/mParlorApp/index.php/app_module/get_advertisers', reqBody)
     .subscribe(
-      response => console.log(response),
+      ( data: any ) => {
+        console.log(data);
+        this.arrAdvertisers = data.advertisers as any[];
+      },
       err => console.log(err)
-    );;
+    );
+
     /*
     var allAdv = this.HttpService.post( 'http://localhost/mParlorApp/index.php/app_module/get_advertisers', reqBody)
       .pipe(map(res => res));
